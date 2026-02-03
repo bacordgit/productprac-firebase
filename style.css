@@ -1,10 +1,13 @@
-
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #50e3c2;
     --background-color: #f7f7f7;
     --text-color: #333;
     --white: #fff;
+    --r-color: #4a90e2; /* R (Blue) */
+    --sr-color: #9b59b6; /* SR (Purple) */
+    --ssr-color: #f1c40f; /* SSR (Yellow) */
+    --ssr-pickup-color: #e91e63; /* SSR Pickup (Pink/Red) */
 }
 
 body {
@@ -12,10 +15,10 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
-    padding: 0;
+    padding: 2rem;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
     background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #7ab3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
@@ -26,6 +29,8 @@ body {
     background-color: var(--white);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
 }
 
 h1 {
@@ -33,31 +38,52 @@ h1 {
     margin-bottom: 2rem;
 }
 
-.lotto-numbers {
+.gacha-results {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+    min-height: 100px;
 }
 
-.lotto-number {
-    width: 60px;
-    height: 60px;
+.gacha-item {
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary-color);
     color: var(--white);
     font-size: 1.5rem;
     font-weight: bold;
-    border-radius: 50%;
+    border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     animation: appear 0.5s ease-in-out;
+    border: 3px solid var(--white);
 }
 
-.generate-btn {
-    background-color: var(--primary-color);
+.gacha-item.r {
+    background-color: var(--r-color);
+}
+.gacha-item.sr {
+    background-color: var(--sr-color);
+}
+.gacha-item.ssr {
+    background-color: var(--ssr-color);
+}
+.gacha-item.ssr-pickup {
+    background-color: var(--ssr-pickup-color);
+    animation: pulse 1s infinite;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.gacha-btn, .reset-btn {
     color: var(--white);
     border: none;
     padding: 1rem 2rem;
@@ -66,17 +92,45 @@ h1 {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.gacha-btn {
+    background-color: var(--primary-color);
     box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
 }
 
-.generate-btn:hover {
+.reset-btn {
+    background-color: #e74c3c; /* Red color for reset */
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.gacha-btn:hover, .reset-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.5);
 }
 
-.generate-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+.statistics {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+
+.results-log {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.log-list {
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border-top: 1px solid #eee;
+}
+
+.log-list li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
 }
 
 @keyframes appear {
@@ -87,5 +141,17 @@ h1 {
     to {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(233, 30, 99, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
     }
 }

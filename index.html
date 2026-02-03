@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Simulator</title>
+    <title>Gacha Simulator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Lotto Number Simulator</h1>
-        <div class="lotto-numbers"></div>
-        <button class="generate-btn">Generate Numbers</button>
+        <h1>Gacha Simulator</h1>
+        <div class="gacha-results"></div>
+        <div class="controls">
+            <button class="gacha-btn">10차</button>
+            <button class="reset-btn">Reset</button>
+        </div>
+        <div class="statistics">
+            <h2>Statistics</h2>
+            <p>Total Pulls: <span id="total-pulls">0</span></p>
+            <p>R: <span id="r-count">0</span> | SR: <span id="sr-count">0</span> | SSR: <span id="ssr-count">0</span></p>
+            <p>SSR Rate: <span id="ssr-rate">0.00</span>%</p>
+        </div>
+        <div class="results-log">
+            <h2>History</h2>
+            <ul class="log-list"></ul>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>
